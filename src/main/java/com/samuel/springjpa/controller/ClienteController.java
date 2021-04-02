@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.samuel.springjpa.aop.ApiLog;
 import com.samuel.springjpa.models.entity.Cliente;
 import com.samuel.springjpa.models.entity.Region;
 import com.samuel.springjpa.models.services.ClienteService;
@@ -39,6 +40,7 @@ public class ClienteController {
         return clienteService.findAll();
     }
 
+    @ApiLog
     @GetMapping("/{id}")
     public ResponseEntity<?> find(@PathVariable Long id) {
         Map<String, Object> response = new HashMap<>();
@@ -59,6 +61,7 @@ public class ClienteController {
         }
     }
 
+    @ApiLog
     @PostMapping
     public ResponseEntity<?> create(@Valid @RequestBody Cliente cliente, BindingResult bindingResult) {
         Map<String, Object> response = new HashMap<String, Object>();
