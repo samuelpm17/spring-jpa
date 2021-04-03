@@ -26,6 +26,7 @@ import com.samuel.springjpa.models.entity.Cliente;
 import com.samuel.springjpa.models.entity.Region;
 import com.samuel.springjpa.models.services.ClienteService;
 
+//@ApiLog
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
@@ -40,7 +41,6 @@ public class ClienteController {
         return clienteService.findAll();
     }
 
-    @ApiLog
     @GetMapping("/{id}")
     public ResponseEntity<?> find(@PathVariable Long id) {
         Map<String, Object> response = new HashMap<>();
@@ -61,7 +61,6 @@ public class ClienteController {
         }
     }
 
-    @ApiLog
     @PostMapping
     public ResponseEntity<?> create(@Valid @RequestBody Cliente cliente, BindingResult bindingResult) {
         Map<String, Object> response = new HashMap<String, Object>();
